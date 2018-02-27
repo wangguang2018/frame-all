@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Yanyun-oms.iml" filepath="$PROJECT_DIR$/.idea/modules/Yanyun-oms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Yanyun-oms_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Yanyun-oms_main.iml" group="Yanyun-oms" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Yanyun-oms_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Yanyun-oms_test.iml" group="Yanyun-oms" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/oms.iml" filepath="$PROJECT_DIR$/.idea/modules/oms.iml" group="oms" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/oms/oms_main.iml" filepath="$PROJECT_DIR$/.idea/modules/oms/oms_main.iml" group="oms" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/oms/oms_test.iml" filepath="$PROJECT_DIR$/.idea/modules/oms/oms_test.iml" group="oms" />
+    </modules>
+  </component>
+</project>
