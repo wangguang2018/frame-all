@@ -1,6 +1,5 @@
 package com.ydd.oms.config.mybatis;
 
-import com.ldnz.oms.entity.annotion.NoFilter;
 import com.ydd.framework.core.common.utils.ReflectUtil;
 import com.ydd.framework.core.common.utils.RequestUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -63,13 +62,8 @@ public class RequestSearchPlugin implements Interceptor {
         }
         String sql = null;
         Method method = invocation.getMethod();
-        NoFilter noFilter = method.getAnnotation(NoFilter.class);
-        if(noFilter != null){
-            //不需要 自动增加过滤条件
-            sql = boundSql.getSql();
-        }else {
-            sql = buildSearchRequestParameters(boundSql.getSql());
-        }
+        sql = buildSearchRequestParameters(boundSql.getSql());
+
         ReflectUtil.setFieldValue(boundSql, "sql", sql);
 
         return invocation.proceed();

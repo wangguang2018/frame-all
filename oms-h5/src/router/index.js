@@ -131,14 +131,6 @@ export const constantRouterMap = [
       //     { path: 'index', component: _import('goods/promotion/index'), name: '商品促销' }
       //   ]
       // },
-      { path: '/goods/edit', component: _import('goods/edit'), name: '编辑商品', hidden: true },
-      { path: '/goods/category/edit', component: _import('goods/category/edit'), name: '编辑商品分类', hidden: true },
-      { path: '/goods/attribute/edit', component: _import('goods/attribute/edit'), name: '编辑商品属性', hidden: true },
-      { path: '/goods/brand/edit', component: _import('goods/brand/edit'), name: '编辑商品品牌', hidden: true },
-      { path: '/goods/view', component: _import('goods/view'), name: '查看商品', hidden: true },
-      { path: '/goods/promotion/edit', component: _import('goods/promotion/edit'), name: '设置促销', hidden: true },
-      { path: '/goods/unique/sn/edit', component: _import('goods/unique/sn/edit'), name: '添加防伪', hidden: true },
-      { path: '/goods/unique/sn/index', component: _import('goods/unique/sn/index'), name: '商品防伪', hidden: true }
     ]
   },
   {
@@ -159,9 +151,6 @@ export const constantRouterMap = [
       //     { path: 'index', component: _import('merchant/index'), name: '门店列表' }
       //   ]
       // },
-      { path: '/merchant/edit', component: _import('merchant/edit'), name: '新增门店', hidden: true },
-      { path: '/merchant/goodsDetail', component: _import('merchant/goodsDetail'), name: '门店商品详情', hidden: true },
-      { path: '/merchant/detail', component: _import('merchant/detail'), name: '门店详情', hidden: true }
     ]
   },
   // {
@@ -201,7 +190,6 @@ export const constantRouterMap = [
       //     { path: '', component: _import('order/goods/index'), name: '订货列表' }
       //   ]
       // },
-      { path: '/order/goods/view', component: _import('order/goods/view'), name: '订货详细', hidden: true }
     ]
   },
   // {
@@ -251,8 +239,6 @@ export const constantRouterMap = [
       //     { path: 'record', component: _import('lottery/record/index'), name: '中奖名单' }
       //   ]
       // },
-      { path: '/turntable/edit', component: _import('turntable/edit'), name: '奖品设置', hidden: true },
-      { path: '/lottery/record/index', component: _import('lottery/record/index'), name: '中奖名单', hidden: true }
     ]
   },
   {
@@ -273,7 +259,6 @@ export const constantRouterMap = [
       //     { path: 'index', component: _import('promotion/discount/index'), name: '折扣设置' }
       //   ]
       // },
-      { path: '/promotion/discount/edit', component: _import('promotion/discount/edit'), name: '编辑折扣', hidden: true },
       // {
       //   path: '/invitation/records/index',
       //   name: '',
@@ -294,7 +279,6 @@ export const constantRouterMap = [
       //     { path: 'index', component: _import('invitation/index'), name: '收益列表' }
       //   ]
       // },
-      { path: '/invitations/detail', component: _import('invitation/detail'), name: '收益明细', hidden: true }
     ]
   },
   {
@@ -334,19 +318,6 @@ export const constantRouterMap = [
       //   children: [
       //     { path: 'payment', component: _import('payment/config/param/index'), name: '支付参数设置' }
       //   ]
-      // },
-      { path: '/payment/config/param/edit', component: _import('payment/config/param/edit'), name: '编辑支付参数', hidden: true },
-      // {
-      //   path: '/balance/withdraw/index',
-      //   name: '',
-      //   redirect: '/balance/withdraw/index',
-      //   component: _import('balance/withdraw/index'),
-      //   noDropdown: true,
-      //   children: [
-      //     { path: 'payment', component: _import('balance/withdraw/index'), name: '提现管理' }
-      //   ]
-      // },
-      { path: '/balance/withdraw/edit', component: _import('balance/withdraw/edit'), name: '查看提现', hidden: true }
     ]
   },
   {
@@ -387,7 +358,6 @@ export const constantRouterMap = [
       //     { path: 'index', component: _import('comment/article/index'), name: '文章评论' }
       //   ]
       // },
-      { path: '/member/edit', component: _import('member/edit'), name: '会员详情', hidden: true }
     ]
   },
   // {
@@ -498,13 +468,6 @@ export const constantRouterMap = [
       //     { path: 'index', component: _import('message/category/index'), name: '消息分类' }
       //   ]
       // },
-      { path: 'message/category/edit', component: _import('message/category/edit'), name: '新增消息分类', hidden: true },
-      { path: 'message/edit', component: _import('message/edit'), name: '新增消息', hidden: true },
-      { path: 'area/edit', component: _import('area/edit'), name: '区域设置', hidden: true },
-      { path: 'sensitive/keywords/edit', component: _import('sensitive/keywords/edit'), name: '敏感词编辑', hidden: true },
-      { path: 'hot/search/keywords/edit', component: _import('hot/search/keywords/edit'), name: '热门词编辑', hidden: true },
-      { path: 'config/edit', component: _import('config/edit'), name: '参数设置', hidden: true },
-      { path: 'faq/edit', component: _import('faq/edit'), name: '常见问题', hidden: true }
     ]
   },
   {
@@ -525,20 +488,6 @@ export const constantRouterMap = [
       //     { path: 'index', component: _import('article/index'), name: '文章管理' }
       //   ]
       // },
-      { path: '/article/edit', component: _import('article/edit'), name: '编辑文章', hidden: true },
-      { path: '/article/detail', component: _import('article/detail'), name: '文章详情', hidden: true },
-      { path: '/article/category/edit', component: _import('common/article/category/edit'), name: '编辑文章分类', hidden: true },
-      // {
-      //   path: '/article/tag',
-      //   name: '',
-      //   redirect: '/article/tag/index',
-      //   component: _import('article/tag/index'),
-      //   noDropdown: true,
-      //   children: [
-      //     { path: 'index', component: _import('article/tag/index'), name: '文章标签列表' }
-      //   ]
-      // },
-      { path: '/article/tag/edit', component: _import('article/tag/edit'), name: '编辑文章标签', hidden: true }
     ]
   },
   {
@@ -559,7 +508,6 @@ export const constantRouterMap = [
       //     { path: 'index', component: _import('banner/index'), name: '广告管理' }
       //   ]
       // },
-      { path: '/banner/edit', component: _import('banner/edit'), name: '创建广告', hidden: true }
     ]
   },
   {
@@ -580,18 +528,6 @@ export const constantRouterMap = [
       //     { path: 'index', component: _import('thread/tag/index'), name: '互动标签' }
       //   ]
       // },
-      { path: '/thread/tag/edit', component: _import('thread/tag/edit'), name: '编辑标签', hidden: true },
-      // {
-      //   path: '/thread/index',
-      //   name: '',
-      //   redirect: '/thread/index',
-      //   component: _import('thread/index'),
-      //   noDropdown: true,
-      //   children: [
-      //     { path: 'index', component: _import('thread/index'), name: '互动列表' }
-      //   ]
-      // },
-      { path: '/thread/detail', component: _import('thread/detail'), name: '互动详情', hidden: true }
     ]
   },
   {
@@ -622,8 +558,6 @@ export const constantRouterMap = [
       //     { path: 'index', component: _import('coupon/index'), name: '会员代金券' }
       //   ]
       // },
-      { path: '/coupon/template/send', component: _import('coupon/template/send'), name: '发放代金券', hidden: true },
-      { path: '/coupon/template/edit', component: _import('coupon/template/edit'), name: '编辑代金券', hidden: true }
     ]
   }
 ]
