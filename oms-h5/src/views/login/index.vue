@@ -27,6 +27,7 @@
 
 <script>
 import { isvalidUsername } from '@/utils/validate'
+import storage from '@/utils/storage'
 
 export default {
   name: 'login',
@@ -57,6 +58,9 @@ export default {
       pwdType: 'password',
       loading: false
     }
+  },
+  created() {
+    storage.set('menus', [])
   },
   methods: {
     /**

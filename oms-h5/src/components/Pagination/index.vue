@@ -13,7 +13,7 @@
       </el-table-column> -->
       <el-table-column type="selection" width="55" v-if="showCheck">
       </el-table-column>
-      <el-table-column v-if="getShowIndex" align="center" label="序号" width="70" >
+      <el-table-column v-if="getShowIndex" align="center" :label="$t('message.index')" width="80" >
         <template scope="scope">
           <span>{{(pagination.page - 1) * pagination.pageSize + scope.$index + 1}}</span>
         </template>

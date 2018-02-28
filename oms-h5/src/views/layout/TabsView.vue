@@ -2,7 +2,7 @@
   <div class='tabs-view-container'>
     <router-link class="tabs-view" v-for="tag in Array.from(visitedViews)" :to="tag.uri" :key="tag.path">
       <el-tag :closable="true" :type="isActive(tag.path)?'primary':''" @close='closeViewTabs(tag,$event)'>
-        {{tag.name}}
+        {{$t(tag.name)}}
       </el-tag>
     </router-link>
   </div>

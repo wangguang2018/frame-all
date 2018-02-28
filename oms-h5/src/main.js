@@ -10,8 +10,18 @@ import './errorLog'// error log
 import './permission' // 权限
 import './styles/font-awesome.less'
 import 'babel-polyfill'
-
+import VueI18n from 'vue-i18n'
+import enLocale from 'element-ui/lib/locale/lang/en'
+import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
+import zh from './assets/common/lang/zh'
+import en from './assets/common/lang/en'
+const e = Object.assign(enLocale, en)
+const z = Object.assign(zhLocale, zh)
+Vue.use(VueI18n)
 Vue.use(ElementUI)
+Vue.config.lang = 'en'
+Vue.locale('zh', z)
+Vue.locale('en', e)
 
 // register global utility filters.
 Object.keys(filters).forEach(key => {
@@ -19,7 +29,6 @@ Object.keys(filters).forEach(key => {
 })
 
 Vue.config.productionTip = false
-
 new Vue({
   el: '#app',
   router,
