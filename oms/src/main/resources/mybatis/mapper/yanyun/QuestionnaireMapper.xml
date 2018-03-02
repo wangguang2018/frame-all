@@ -15,6 +15,19 @@
     </resultMap>
 
     <resultMap id="QuestionnaireDtoMap" type="com.yanyun.oms.dto.QuestionnaireDto" extends="QuestionnaireMap">
+        <collection property="questionList" select="findQuestionList" column="id"></collection>
+    </resultMap>
+
+    <resultMap id="QuestionDtoMap" type="com.yanyun.oms.dto.QuestionDto">
+        <result column="id" property="id"></result>
+        <result column="type" property="type"></result>
+        <result column="question" property="question"></result>
+        <collection property="options" column="id" select="findQuestionOptionList"></collection>
+    </resultMap>
+
+    <resultMap id="QuestionOptionDtoMap" type="com.yanyun.oms.dto.QuestionOptionDto">
+        <result column="id" property="id"></result>
+        <result column="name" property="name"></result>
     </resultMap>
 
     <!--表名 -->
@@ -202,4 +215,52 @@
         </foreach>
     </update>
 
+
+    <insert id="insertQuestion" useGeneratedKeys="true" keyProperty="question.id">
+        INSERT INTO `ec_questionnaire_question` (`type`, `question`, `questionnaire_id`)
+        VALUES (#{question.type}, #{question.question}, #{questionnaireId})
+    </insert>
+
+    <insert id="insertQuestionOptions">
+        INSERT INTO `ec_questionnaire_question_option`
+        (`name`, `question_id`,`questionnaire_id`)
+        VALUES
+        <foreach collection="options" item="option" index="index" separator=",">
+        ( #{option.name}, #{questionId},#{questionnaireId})
+        </foreach>
+    </insert>
+
+    <insert id="insertQuestionWithId" >
+        INSERT INTO `ec_questionnaire_question` (`id`,`type`, `question`, `questionnaire_id`)
+        VALUES (#{question.id},#{question.type}, #{question.question}, #{questionnaireId})
+    </insert>
+
+    <insert id="insertQuestionOptionsWithId">
+        INSERT INTO `ec_questionnaire_question_option`
+        (`id`,`name`, `question_id`,`questionnaire_id`)
+        VALUES
+        <foreach collection="options" item="option" index="index" separator=",">
+            (#{option.id}, #{option.name}, #{questionId},#{questionnaireId})
+        </foreach>
+    </insert>
+
+    <delete id="deleteQuestion">
+        DELETE FROM ec_questionnaire_question
+        WHERE questionnaire_id = #{questionnaireId}
+    </delete>
+
+    <delete id="deleteQuestionOption">
+       DELETE FROM ec_questionnaire_question_option
+       WHERE questionnaire_id = #{questionnaireId}
+    </delete>
+
+    <select id="findQuestionList" resultMap="QuestionDtoMap">
+        SELECT * from ec_questionnaire_question
+        WHERE questionnaire_id = #{id}
+    </select>
+
+    <select id="findQuestionOptionList" resultMap="QuestionOptionDtoMap">
+        SELECT * FROM ec_questionnaire_question_option
+        WHERE question_id = #{id}
+    </select>
 </mapper>

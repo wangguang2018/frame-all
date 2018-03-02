@@ -72,4 +72,13 @@ public class QuestionnaireController extends OmsController {
 		return ResponseDTO.ok(operationName);
 	}
 
+	/**
+	 * 查询问卷调查信息
+	 */
+	@RequestMapping(value = "/questionnaire/statistics/{id}", method = RequestMethod.GET)
+	public ResponseDTO statistics(@PathVariable("id") Integer id) {
+		return ResponseDTO.ok()
+				.addAttribute("questionnaire", questionnaireService.statistics(id));
+	}
+
 }

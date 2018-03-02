@@ -70,5 +70,11 @@ public interface QuestionnaireService extends BaseService {
      */
     Integer updateStatus(Integer[] ids, Byte status);
 
+    /**
+     * 问卷调查统计
+     * @param questionnaireId
+     * @return
+     */
+    QuestionnaireDto statistics(Integer questionnaireId);
 }
 

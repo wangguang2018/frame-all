@@ -9,19 +9,19 @@
       <el-form-item label="题目" prop="question">
           <div v-for="(item,index) in form.items" :key="item">
               <div v-if="item.type === 1" style="margin-bottom:5px">
-                <label>{{item.question}}</label><el-button type="primary"  @click="removeQ(index)" style="margin-left:3px" size="mini" icon="delete"></el-button><br/>
+                <label>{{index+1}}.{{item.question}}</label><el-button type="primary"  @click="removeQ(index)" style="margin-left:3px" size="mini" icon="delete"></el-button><br/>
                 <el-checkbox-group>
-                  <el-checkbox v-for="checkbox in item.checkboxs" :key="checkbox" :label="checkbox"></el-checkbox>
+                  <el-checkbox v-for="option in item.options" :key="option" :label="option.name"></el-checkbox>
                 </el-checkbox-group>
               </div>
               <div v-if="item.type === 2" style="margin-bottom:5px">
-                <label>{{item.question}}</label><el-button type="primary"  @click="removeQ(index)" style="margin-left:3px" size="mini" icon="delete"></el-button><br/>
+                <label>{{index+1}}.{{item.question}}</label><el-button type="primary"  @click="removeQ(index)" style="margin-left:3px" size="mini" icon="delete"></el-button><br/>
                 <el-radio-group>
-                  <el-radio v-for="radio in item.radios" :key="radio" :label="radio"></el-radio>
+                  <el-radio v-for="option in item.options" :key="option" :label="option.name"></el-radio>
                 </el-radio-group>
               </div>
               <div v-if="item.type === 3" style="margin-bottom:5px">
-                <label>{{item.question}}</label><el-button type="primary" @click="removeQ(index)" style="margin-left:3px" size="mini" icon="delete"></el-button><br/>
+                <label>{{index+1}}.{{item.question}}</label><el-button type="primary" @click="removeQ(index)" style="margin-left:3px" size="mini" icon="delete"></el-button><br/>
                 <el-input type="textarea" :rows="3">
                 </el-input>
               </div>
@@ -52,7 +52,7 @@
       </el-form>
       <div>
         <div v-for="(item,index) in question.items" :key="item" >
-          <el-input v-model="item.text" style="margin-bottom:5px">
+          <el-input v-model="item.name" style="margin-bottom:5px">
             <el-button type="primary" @click="removeA(index)" slot="append" icon="delete"></el-button>  
           </el-input>
           
@@ -76,7 +76,7 @@ export default {
       if (this.question.type !== 3) {
         var flag = false
         this.question.items.forEach(element => {
-          if (element.text) {
+          if (element.name) {
             flag = true
           }
         })
@@ -153,26 +153,16 @@ export default {
       this.question.items = []
     },
     addQItem() {
-      this.question.items.push({ 'text': '' })
+      this.question.items.push({ 'name': '', 'id': undefined })
     },
     handleAddQ() {
       this.$refs.questionForm.validate(valid => {
         if (valid) {
-          var option = []
-          this.question.items.forEach(item => {
-            if (item.text) {
-              option.push(item.text)
-            }
-          })
-
-          if (this.question.type === 1) {
-            var item = { 'type': this.question.type, 'question': this.question.name, 'checkboxs': option }
-            this.form.items.push(item)
-          } else if (this.question.type === 2) {
-            item = { 'type': this.question.type, 'question': this.question.name, 'radios': option }
+          if (this.question.type === 1 || this.question.type === 2) {
+            var item = { 'id': undefined, 'type': this.question.type, 'question': this.question.name, 'options': this.question.items }
             this.form.items.push(item)
           } else if (this.question.type === 3) {
-            item = { 'type': this.question.type, 'question': this.question.name }
+            item = { 'id': undefined, 'type': this.question.type, 'question': this.question.name }
             this.form.items.push(item)
           }
           this.dialogFormVisible = false

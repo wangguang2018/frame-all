@@ -27,3 +27,10 @@ export function remove(ids) {
 export function save(params) {
   return http.post('/questionnaire', params)
 }
+
+/**
+ * 查询问卷调查统计
+ */
+export function statistics(id) {
+  return http.get('/questionnaire/statistics/' + id)
+}

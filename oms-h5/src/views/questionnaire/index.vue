@@ -43,6 +43,7 @@
         <el-button v-if="scope.row.status === 1" size="small" type="text" @click="handleUpdateStatus(scope.row, 0)">禁用</el-button>
         <el-button v-if="scope.row.status === 0" size="small" type="text" @click="handleUpdateStatus(scope.row, 1)">启用</el-button>
         <el-button size="small" type="text" @click="handleEdit(scope.row.id)">编辑</el-button>
+        <el-button size="small" type="text" @click="handleStatistics(scope.row.id)">统计</el-button>
         <el-button size="small" type="text" class="danger" @click="handleDelete(scope.row)">删除</el-button>
       </template>
     </el-table-column>
@@ -77,6 +78,9 @@ export default {
   created() {
   },
   methods: {
+    handleStatistics(id) {
+      this.$router.push({ path: '/questionnaire/statistics', query: { id: id }})
+    },
     /**
      * 搜索问卷调查
      */

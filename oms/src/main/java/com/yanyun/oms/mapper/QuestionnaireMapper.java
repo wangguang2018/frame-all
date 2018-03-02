@@ -1,5 +1,8 @@
 package com.yanyun.oms.mapper;
+import com.yanyun.oms.dto.QuestionOptionDto;
 import com.yanyun.oms.dto.QuestionnaireDto;
+import com.yanyun.oms.entity.Question;
+import com.yanyun.oms.entity.QuestionOption;
 import com.yanyun.oms.entity.Questionnaire;
 import org.apache.ibatis.annotations.Param;
 
@@ -68,4 +71,15 @@ public interface QuestionnaireMapper {
      */
     int updateStatus(@Param("ids") Integer[] ids, @Param("status") Byte status);
 
+    void insertQuestion(@Param("question") Question question,@Param("questionnaireId") Integer questionnaireId);
+
+    void insertQuestionOptions(@Param("options") List<QuestionOptionDto> questionOptions, @Param("questionId") Integer questionId, @Param("questionnaireId") Integer questionnaireId);
+
+    void insertQuestionWithId(@Param("question") Question question,@Param("questionnaireId") Integer questionnaireId);
+
+    void insertQuestionOptionsWithId(@Param("options") List<QuestionOptionDto> questionOptions,@Param("questionId") Integer questionId,@Param("questionnaireId") Integer questionnaireId);
+
+    void deleteQuestion(@Param("questionnaireId") Integer questionnaireId);
+
+    void deleteQuestionOption(@Param("questionnaireId") Integer questionnaireId);
 }

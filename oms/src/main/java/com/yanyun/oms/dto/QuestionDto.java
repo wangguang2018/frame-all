@@ -1,5 +1,7 @@
 package com.yanyun.oms.dto;
 
+import com.yanyun.oms.entity.QuestionOption;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -7,6 +9,9 @@ import java.util.List;
  * 问卷调查问题
  */
 public class QuestionDto implements Serializable{
+
+    private Integer id;
+
 
     /**
      * 问卷调查题目类型 1多选 2单选 3文本
@@ -19,14 +24,10 @@ public class QuestionDto implements Serializable{
     private String question;
 
     /**
-     * 单选框
+     * 选项
      */
-    private List<String> radios;
+    private List<QuestionOptionDto> options;
 
-    /**
-     * 多选框
-     */
-    private List<String> checkboxs;
 
     public Integer getType() {
         return type;
@@ -44,19 +45,20 @@ public class QuestionDto implements Serializable{
         this.question = question;
     }
 
-    public List<String> getRadios() {
-        return radios;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setRadios(List<String> radios) {
-        this.radios = radios;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public List<String> getCheckboxs() {
-        return checkboxs;
+    public List<QuestionOptionDto> getOptions() {
+        return options;
     }
 
-    public void setCheckboxs(List<String> checkboxs) {
-        this.checkboxs = checkboxs;
+    public void setOptions(List<QuestionOptionDto> options) {
+        this.options = options;
     }
 }
