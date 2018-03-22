@@ -15,7 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableAutoConfiguration
 @EnableScheduling
-@MapperScan(value = {"com.ydd.oms.mapper","com.yanyun.oms.mapper"})
+@MapperScan(value = {"com.ydd.oms.mapper","com.bankbuild.oms.mapper"})
 public class Application {
 
     /**

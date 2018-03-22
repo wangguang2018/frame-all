@@ -1,3 +1,6 @@
-rootProject.name = 'Yanyun-com.ydd.oms'
+rootProject.name = 'Bankbuild-com.ydd.oms'
+include 'modules'
 include 'oms'
+include 'oms-api'
+
 

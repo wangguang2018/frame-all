@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ydd.oms.mapper.sys.RoleMapper">
+
+    <resultMap id="RoleMap" type="com.ydd.oms.entity.sys.Role">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="status" property="status" />
+		<result column="name" property="name" />
+		<result column="created_id" property="createdId" />
+		<result column="modified_id" property="modifiedId" />
+		<result column="created_time" property="createdTime" />
+		<result column="modified_time" property="modifiedTime" />
+		<result column="deleted" property="deleted" />
+		<result column="admin_count" property="adminCount" jdbcType="INTEGER" />
+    </resultMap>
+
+	<resultMap id="RoleDTOMap" type="com.ydd.oms.dto.sys.RoleDTO">
+		<result column="id" property="roleId" jdbcType="INTEGER" />
+		<result column="name" property="roleName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!--表名 -->
+	<sql id="tableName">
+		sys_role
+	</sql>
+	
+	<!-- 字段 -->
+	<sql id="Field">
+		id,
+		status,
+		`name`,
+		created_id,
+		modified_id,
+		created_time,
+		modified_time,
+		deleted
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{id},
+		#{status},
+		#{name},
+		#{createdId},
+		#{modifiedId},
+		#{createdTime},
+		#{modifiedTime},
+		#{deleted}
+	</sql>
+
+	<!-- 查询全部记录 -->
+    <select id="findAll" resultMap="RoleMap">
+        SELECT
+        	<include refid="Field"></include>
+        FROM
+        	<include refid="tableName"></include>
+		WHERE
+			deleted = 0
+    </select>
+
+	<select id="findListWithMemberCount" resultMap="RoleMap">
+		SELECT
+			r.*, IFNULL(ar.admin_count, 0) AS admin_count
+		FROM
+			sys_role r
+			LEFT JOIN (SELECT role_id, COUNT(1) AS admin_count FROM sys_admin_role GROUP BY role_id) ar ON ar.role_id = r.id
+		WHERE
+			r.deleted = 0
+	</select>
+
+	<!--根据管理员编号查询角色-->
+	<select id="findByAdminId" parameterType="Integer" resultMap="RoleMap">
+		SELECT
+			r.*
+		FROM
+			sys_role r
+		LEFT JOIN
+			sys_admin_role ar
+		ON
+			r.id = ar.role_id
+		WHERE
+			ar.admin_id = #{adminId, jdbcType=INTEGER} AND r.deleted = 0
+	</select>
+
+	<select id="findRoleNameByAdminId" parameterType="Integer" resultMap="RoleMap">
+		SELECT
+			r.name
+		FROM
+			sys_role r
+			LEFT JOIN sys_admin_role ar ON r.id = ar.role_id
+		WHERE
+			ar.admin_id = #{adminId, jdbcType=INTEGER} AND r.deleted = 0
+	</select>
+	
+	<!-- 新增-->
+	<insert id="insert" parameterType="com.ydd.oms.entity.sys.Role" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+			<include refid="tableName"></include>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+				id,
+            </if>
+            <if test="status != null">
+				status,
+            </if>
+            <if test="name != null">
+				name,
+            </if>
+            <if test="createdId != null">
+				created_id,
+            </if>
+            <if test="modifiedId != null">
+				modified_id,
+            </if>
+            <if test="createdTime != null">
+				created_time,
+            </if>
+            <if test="modifiedTime != null">
+				modified_time,
+            </if>
+            <if test="deleted != null">
+				deleted,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+				#{id},
+            </if>
+            <if test="status != null">
+				#{status},
+            </if>
+            <if test="name != null">
+				#{name},
+            </if>
+            <if test="createdId != null">
+				#{createdId},
+            </if>
+            <if test="modifiedId != null">
+				#{modifiedId},
+            </if>
+            <if test="createdTime != null">
+				#{createdTime},
+            </if>
+            <if test="modifiedTime != null">
+				#{modifiedTime},
+            </if>
+            <if test="deleted != null">
+				#{deleted},
+            </if>
+        </trim>
+	</insert>
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="java.lang.Integer">
+		UPDATE
+			<include refid="tableName"></include>
+		SET
+			deleted = 1
+		WHERE
+			id = #{id}
+	</delete>
+
+    <!-- 批量删除 -->
+    <delete id="deleteByIds">
+        UPDATE
+        	<include refid="tableName"></include>
+		SET
+			deleted = 1
+        WHERE
+			id IN
+			<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+    </delete>
+	
+	<!-- 更新记录 -->
+	<update id="update" parameterType="com.ydd.oms.entity.sys.Role">
+		UPDATE
+			<include refid="tableName"></include>
+        <set>
+			<if test="status != null">
+				status = #{status},
+			</if>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="createdId != null">
+				created_id = #{createdId},
+			</if>
+			<if test="modifiedId != null">
+				modified_id = #{modifiedId},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime},
+			</if>
+			<if test="modifiedTime != null">
+				modified_time = #{modifiedTime},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted},
+			</if>
+        </set>
+        WHERE id = #{id}
+	</update>
+	
+	<!-- 通过编号查询 -->
+	<select id="findById" parameterType="java.lang.Integer" resultMap="RoleMap">
+		SELECT
+			<include refid="Field"></include>
+		FROM
+			<include refid="tableName"></include>
+		WHERE id = #{id}
+	</select>
+
+	<!--更新状态-->
+	<update id="updateStatus">
+		UPDATE
+			<include refid="tableName"></include>
+		SET
+			status = #{status, jdbcType=TINYINT}
+		WHERE
+			id
+		IN
+		<foreach collection="ids" item="id" index="index" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</update>
+
+	 <!--保存菜单-->
+	<insert id="saveMenu">
+		INSERT INTO
+			sys_role_menu
+		VALUES
+		<foreach collection="menuIds" item="menuId" index="index" separator=",">
+			(#{roleId, jdbcType=INTEGER}, #{menuId, jdbcType=INTEGER})
+		</foreach>
+	</insert>
+
+	<!--删除菜单-->
+	<delete id="deleteMenu">
+		DELETE FROM
+			sys_role_menu
+		WHERE
+			role_id = #{roleId, jdbcType=INTEGER}
+	</delete>
+
+	<!--保存权限点-->
+	<insert id="savePermission">
+		INSERT INTO
+			sys_role_permission
+		VALUES
+		<foreach collection="permissionIds" item="permissionId" index="index" separator=",">
+			(#{roleId, jdbcType=INTEGER}, #{permissionId, jdbcType=INTEGER})
+		</foreach>
+	</insert>
+
+	<!--删除权限点-->
+	<delete id="deletePermission">
+		DELETE FROM
+			sys_role_permission
+		WHERE
+			role_id = #{roleId, jdbcType=INTEGER}
+	</delete>
+
+	<!--查询角色-->
+	<select id="findDTOList" resultMap="RoleDTOMap">
+		SELECT
+			id, name
+		FROM
+			sys_role
+		WHERE
+			1 = 1
+		<if test="status != null">
+			AND status = #{status, jdbcType=TINYINT}
+		</if>
+	</select>
+
+</mapper>

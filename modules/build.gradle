@@ -1,0 +1,34 @@
+project(':modules') {
+
+    buildscript {
+        repositories {
+            maven {url 'http://maven.ydd100.cn/repository/maven-public/'}
+        }
+        /*dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.4.RELEASE")
+        }*/
+    }
+
+    apply plugin: 'java'
+//    apply plugin: 'org.springframework.boot'
+
+    jar {
+        baseName = 'com.ydd.oms'
+        version = '1.0.0'
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        maven {url 'http://maven.ydd100.cn/repository/maven-public/'}
+        mavenCentral()
+    }
+
+    dependencies {
+        compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.8.0'
+        compile 'com.ydd:framework-core:1.7.9'
+    }
+}
+
+

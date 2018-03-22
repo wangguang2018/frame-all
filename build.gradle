@@ -1,4 +1,4 @@
-group 'Yanyun-oms'
+group 'Bankbuild-oms'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'

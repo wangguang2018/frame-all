@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bankbuild.api.mapper.MemberQuestionnaireMapper">
+
+    <resultMap id="MemberQuestionnaireMap" type="com.ydd.model.entity.MemberQuestionnaire">
+		<id column="id" property="id" jdbcType="INTEGER"/>
+		<result column="member_id" property="memberId"  jdbcType="INTEGER" />
+		<result column="questionnaire_id" property="questionnaireId"  jdbcType="INTEGER" />
+		<result column="question_id" property="questionId"  jdbcType="INTEGER" />
+		<result column="answer" property="answer"  jdbcType="VARCHAR" />
+		<result column="created_id" property="createdId"  jdbcType="INTEGER" />
+		<result column="modified_id" property="modifiedId"  jdbcType="INTEGER" />
+		<result column="created_time" property="createdTime"  jdbcType="TIMESTAMP" />
+		<result column="modified_time" property="modifiedTime"  jdbcType="TIMESTAMP" />
+		<result column="deleted" property="deleted"  jdbcType="TINYINT" />
+    </resultMap>
+
+    <resultMap id="MemberQuestionnaireDtoMap" type="com.bankbuild.api.dto.MemberQuestionnaireDTO">
+		<id column="id" property="id" jdbcType="INTEGER"/>
+		<result column="member_id" property="memberId" jdbcType="INTEGER" />
+		<result column="questionnaire_id" property="questionnaireId" jdbcType="INTEGER" />
+		<result column="question_id" property="questionId" jdbcType="INTEGER" />
+		<result column="answer" property="answer" jdbcType="VARCHAR" />
+		<result column="created_id" property="createdId" jdbcType="INTEGER" />
+		<result column="modified_id" property="modifiedId" jdbcType="INTEGER" />
+		<result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+		<result column="modified_time" property="modifiedTime" jdbcType="TIMESTAMP" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+    </resultMap>
+	
+	<!--表名 -->
+	<sql id="tableName">
+		ec_member_questionnaire
+	</sql>
+	
+	<!-- 字段 -->
+	<sql id="Field">
+		id,
+		member_id,
+		questionnaire_id,
+		question_id,
+		answer,
+		created_id,
+		modified_id,
+		created_time,
+		modified_time,
+		deleted
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{id, jdbcType=INTEGER},
+		#{memberId, jdbcType=INTEGER},
+		#{questionnaireId, jdbcType=INTEGER},
+		#{questionId, jdbcType=INTEGER},
+		#{answer, jdbcType=VARCHAR},
+		#{createdId, jdbcType=INTEGER},
+		#{modifiedId, jdbcType=INTEGER},
+		#{createdTime, jdbcType=TIMESTAMP},
+		#{modifiedTime, jdbcType=TIMESTAMP},
+		#{deleted, jdbcType=TINYINT}
+	</sql>
+
+	<!-- 查询全部记录 -->
+    <select id="findAll" resultMap="MemberQuestionnaireMap">
+        SELECT
+        	<include refid="Field"></include>
+        FROM
+        	<include refid="tableName"></include>
+		WHERE
+			deleted = 0
+    </select>
+	
+	<!-- 新增-->
+	<insert id="insert" parameterType="com.ydd.model.entity.MemberQuestionnaire" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+			<include refid="tableName"></include>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+				id,
+            </if>
+            <if test="memberId != null">
+				member_id,
+            </if>
+            <if test="questionnaireId != null">
+				questionnaire_id,
+            </if>
+            <if test="questionId != null">
+				question_id,
+            </if>
+            <if test="answer != null">
+				answer,
+            </if>
+            <if test="createdId != null">
+				created_id,
+            </if>
+            <if test="modifiedId != null">
+				modified_id,
+            </if>
+            <if test="createdTime != null">
+				created_time,
+            </if>
+            <if test="modifiedTime != null">
+				modified_time,
+            </if>
+            <if test="deleted != null">
+				deleted,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+				#{id},
+            </if>
+            <if test="memberId != null">
+				#{memberId},
+            </if>
+            <if test="questionnaireId != null">
+				#{questionnaireId},
+            </if>
+            <if test="questionId != null">
+				#{questionId},
+            </if>
+            <if test="answer != null">
+				#{answer},
+            </if>
+            <if test="createdId != null">
+				#{createdId},
+            </if>
+            <if test="modifiedId != null">
+				#{modifiedId},
+            </if>
+            <if test="createdTime != null">
+				#{createdTime},
+            </if>
+            <if test="modifiedTime != null">
+				#{modifiedTime},
+            </if>
+            <if test="deleted != null">
+				#{deleted},
+            </if>
+        </trim>
+	</insert>
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="java.lang.Integer">
+		UPDATE
+			<include refid="tableName"></include>
+		SET
+			deleted = 1
+		WHERE
+			id = #{id}
+	</delete>
+
+    <!-- 批量删除 -->
+    <delete id="deleteByIds">
+        UPDATE
+        	<include refid="tableName"></include>
+		SET
+			deleted = 1
+        WHERE
+			id IN
+			<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+    </delete>
+	
+	<!-- 更新记录 -->
+	<update id="update" parameterType="com.ydd.model.entity.MemberQuestionnaire">
+		UPDATE
+			<include refid="tableName"></include>
+        <set>
+			<if test="memberId != null">
+				member_id = #{memberId},
+			</if>
+			<if test="questionnaireId != null">
+				questionnaire_id = #{questionnaireId},
+			</if>
+			<if test="questionId != null">
+				question_id = #{questionId},
+			</if>
+			<if test="answer != null">
+				answer = #{answer},
+			</if>
+			<if test="createdId != null">
+				created_id = #{createdId},
+			</if>
+			<if test="modifiedId != null">
+				modified_id = #{modifiedId},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime},
+			</if>
+			<if test="modifiedTime != null">
+				modified_time = #{modifiedTime},
+			</if>
+			<if test="deleted != null">
+				deleted = #{deleted},
+			</if>
+        </set>
+        WHERE id = #{id}
+	</update>
+	
+	<!-- 通过编号查询 -->
+	<select id="findById" parameterType="java.lang.Integer" resultMap="MemberQuestionnaireMap">
+		SELECT
+			<include refid="Field"></include>
+		FROM
+			<include refid="tableName"></include>
+		WHERE id = #{id}
+	</select>
+
+	<select id="findByQuestionId" resultMap="MemberQuestionnaireDtoMap">
+		SELECT
+		<include refid="Field"></include>
+		FROM
+		<include refid="tableName"></include>
+		WHERE questionnaire_id = #{questionnaireId}
+		and question_id = #{questionId}
+	</select>
+
+	<select id="countQuestionnaireByMember" resultType="java.lang.Integer">
+		SELECT COUNT(0) FROM ec_member_questionnaire
+		WHERE  questionnaire_id = #{questionnaireId}
+	</select>
+
+	<select id="countQuestionOptionByMember" resultType="java.lang.Integer">
+		select count(0) from ec_member_questionnaire where answer = #{optionId}
+		and questionnaire_id = #{questionnaireId}
+		and question_id = #{questionId}
+	</select>
+</mapper>

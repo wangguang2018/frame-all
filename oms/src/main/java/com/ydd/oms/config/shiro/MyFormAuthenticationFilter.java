@@ -77,7 +77,8 @@ public class MyFormAuthenticationFilter extends FormAuthenticationFilter {
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         // 排除登录页面
-        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+        return true;
+        /*HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         if (httpServletRequest.getRequestURI().equals(getLoginUrl())) {
             return super.onAccessDenied(request, response);
         }
@@ -86,6 +87,6 @@ public class MyFormAuthenticationFilter extends FormAuthenticationFilter {
         ret.setExceptionCode(OmsExceptionCodeTemplate.LOGIN_STATUS_EXPIRED);
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().write(JsonMapper.nonEmptyMapper().toJson(ret));
-        return false;
+        return false;*/
     }
 }
