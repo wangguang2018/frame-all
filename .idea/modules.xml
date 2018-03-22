@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2943764/Bankbuild-com.ydd.oms.iml" filepath="$PROJECT_DIR$/.idea/modules/-2943764/Bankbuild-com.ydd.oms.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2943764/Bankbuild-com.ydd.oms_main.iml" filepath="$PROJECT_DIR$/.idea/modules/-2943764/Bankbuild-com.ydd.oms_main.iml" group="Bankbuild-com.ydd.oms" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-2943764/Bankbuild-com.ydd.oms_test.iml" filepath="$PROJECT_DIR$/.idea/modules/-2943764/Bankbuild-com.ydd.oms_test.iml" group="Bankbuild-com.ydd.oms" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/modules.iml" filepath="$PROJECT_DIR$/.idea/modules/modules.iml" group="modules" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/modules_main.iml" filepath="$PROJECT_DIR$/.idea/modules/modules_main.iml" group="modules" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/modules_test.iml" filepath="$PROJECT_DIR$/.idea/modules/modules_test.iml" group="modules" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Bankbuild-com.ydd.oms.iml" filepath="$PROJECT_DIR$/.idea/modules/Bankbuild-com.ydd.oms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Bankbuild-com.ydd.oms_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Bankbuild-com.ydd.oms_main.iml" group="Bankbuild-com.ydd.oms" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Bankbuild-com.ydd.oms_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Bankbuild-com.ydd.oms_test.iml" group="Bankbuild-com.ydd.oms" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/modules/modules.iml" filepath="$PROJECT_DIR$/.idea/modules/modules/modules.iml" group="modules" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/modules/modules_main.iml" filepath="$PROJECT_DIR$/.idea/modules/modules/modules_main.iml" group="modules" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/modules/modules_test.iml" filepath="$PROJECT_DIR$/.idea/modules/modules/modules_test.iml" group="modules" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/oms/oms.iml" filepath="$PROJECT_DIR$/.idea/modules/oms/oms.iml" group="oms" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/oms-api.iml" filepath="$PROJECT_DIR$/.idea/modules/oms-api.iml" group="oms-api" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/oms-api_main.iml" filepath="$PROJECT_DIR$/.idea/modules/oms-api_main.iml" group="oms-api" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/oms-api_test.iml" filepath="$PROJECT_DIR$/.idea/modules/oms-api_test.iml" group="oms-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/oms-api/oms-api.iml" filepath="$PROJECT_DIR$/.idea/modules/oms-api/oms-api.iml" group="oms-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/oms-api/oms-api_main.iml" filepath="$PROJECT_DIR$/.idea/modules/oms-api/oms-api_main.iml" group="oms-api" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/oms-api/oms-api_test.iml" filepath="$PROJECT_DIR$/.idea/modules/oms-api/oms-api_test.iml" group="oms-api" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/oms/oms_main.iml" filepath="$PROJECT_DIR$/.idea/modules/oms/oms_main.iml" group="oms" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/oms/oms_test.iml" filepath="$PROJECT_DIR$/.idea/modules/oms/oms_test.iml" group="oms" />
     </modules>

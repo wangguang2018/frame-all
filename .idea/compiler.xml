@@ -10,10 +10,6 @@
       <module name="oms-api_test" target="1.8" />
       <module name="oms_main" target="1.8" />
       <module name="oms_test" target="1.8" />
-      <module name="Yanyun-com.ydd.oms_main" target="1.8" />
-      <module name="Yanyun-com.ydd.oms_test" target="1.8" />
-      <module name="Yanyun-oms_main" target="1.8" />
-      <module name="Yanyun-oms_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
